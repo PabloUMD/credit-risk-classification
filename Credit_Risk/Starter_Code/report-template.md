@@ -1,27 +1,45 @@
-# Module 12 Report Template
+
+# Credit Risk Analysis Report
 
 ## Overview of the Analysis
 
-In this section, describe the analysis you completed for the machine learning models used in this Challenge. This might include:
+In this analysis, we aimed to build a machine learning model to predict the risk of loan default using financial data from a lending institution. The primary purpose of this analysis is to identify high-risk loans to better manage credit risk.
 
-* Explain the purpose of the analysis.
-* Explain what financial information the data was on, and what you needed to predict.
-* Provide basic information about the variables you were trying to predict (e.g., `value_counts`).
-* Describe the stages of the machine learning process you went through as part of this analysis.
-* Briefly touch on any methods you used (e.g., `LogisticRegression`, or any other algorithms).
+The data provided includes various financial attributes and the loan status, where a value of `0` in the `loan_status` column indicates a healthy loan, and a value of `1` indicates a high-risk loan. Our goal was to predict the `loan_status` using the other financial attributes as features.
+
+### Data Information
+- The data was read from `lending_data.csv`.
+- The label (`y`) was derived from the `loan_status` column.
+- The features (`X`) included the remaining columns.
+
+### Machine Learning Process
+1. **Data Splitting**: The data was split into training and testing sets using `train_test_split`.
+2. **Modeling**: A logistic regression model (`LogisticRegression`) was trained using the training data.
+3. **Evaluation**: The model was evaluated on the testing data using a confusion matrix and a classification report.
+
+### Methods Used
+- **Logistic Regression**: This algorithm was used due to its suitability for binary classification problems like predicting loan status.
 
 ## Results
 
-Using bulleted lists, describe the accuracy scores and the precision and recall scores of all machine learning models.
-
-* Machine Learning Model 1:
-    * Description of Model 1 Accuracy, Precision, and Recall scores.
+### Machine Learning Model 1: Logistic Regression
+- **Accuracy Score**: 0.99
+- **Precision Score**:
+  - Healthy Loan (0): 1.00
+  - High-Risk Loan (1): 0.85
+- **Recall Score**:
+  - Healthy Loan (0): 1.00
+  - High-Risk Loan (1): 0.91
 
 ## Summary
 
-Summarize the results of the machine learning models, and include a recommendation on the model to use, if any. For example:
+The logistic regression model demonstrates a high overall accuracy of 99%, with perfect precision and recall for predicting healthy loans (0). For high-risk loans (1), the precision is 0.85 and the recall is 0.91, which are still relatively high but indicate some room for improvement.
 
-* Which one seems to perform best? How do you know it performs best?
-* Does performance depend on the problem we are trying to solve? (For example, is it more important to predict the `1`'s, or predict the `0`'s? )
+### Recommendation
+Based on the results, the logistic regression model is recommended for use in predicting loan defaults. The model performs exceptionally well in predicting healthy loans, which are the majority class, and reasonably well in predicting high-risk loans. This model is beneficial for managing credit risk effectively, as it can accurately identify most high-risk loans while maintaining high accuracy for healthy loans.
 
-If you do not recommend any of the models, please justify your reasoning.
+### Considerations
+- While the model performs well overall, further improvements could be made to enhance the precision and recall for high-risk loans.
+- Depending on the business requirement, if predicting high-risk loans is more critical, additional techniques like handling class imbalance or using more complex algorithms could be explored.
+
+This comprehensive analysis and the resulting logistic regression model provide a robust tool for predicting loan defaults, aiding in better credit risk management for the lending institution.
